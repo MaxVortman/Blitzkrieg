@@ -1,0 +1,21 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/src/gui/blitzkrieg-web-app/node_modules
+
+# testing
+/src/gui/blitzkrieg-web-app/coverage
+
+# production
+/src/gui/blitzkrieg-web-app/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+/src/gui/blitzkrieg-web-app/npm-debug.log*
+/src/gui/blitzkrieg-web-app/yarn-debug.log*
+/src/gui/blitzkrieg-web-app/yarn-error.log*

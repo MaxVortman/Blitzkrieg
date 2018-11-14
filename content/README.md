@@ -8,14 +8,14 @@ This is subfolder of game dialogs and actions.
 {
     "events":[
         {
-            "condition": "default", //стандартное событие
+            "condition": "default",
             "event": {
                 "text": "Среда. Самое приятное событие дня – завтрак...",
                 "actions": [
                     {
                         "action" : "игрок согласился",
                         "state-changes" : {
-                        "Colleagues-attitude" : "+ 10" //какая-то условная единица
+                        "Colleagues-attitude" : "+ 10"
                         }
                     },
                     {

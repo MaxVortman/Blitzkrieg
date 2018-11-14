@@ -15,13 +15,13 @@ This is subfolder of game dialogs and actions.
                     {
                         "action" : "игрок согласился",
                         "state-changes" : {
-                        "Colleagues-attitude" : "+ 10"
+                        "colleagues-attitude" : "+ 10"
                         }
                     },
                     {
                         "action": "игрок отказался",
                         "state-changes" : {
-                        "Colleagues-attitude" : "- 10"
+                        "colleagues-attitude" : "- 10"
                         }
                     }
                 ],

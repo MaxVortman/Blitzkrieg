@@ -1,6 +1,14 @@
 {
-  "main.css": "static/css/main.65027555.css",
-  "main.css.map": "static/css/main.65027555.css.map",
-  "main.js": "static/js/main.f43b9fb0.js",
-  "main.js.map": "static/js/main.f43b9fb0.js.map"
+  "main.css": "/Blitzkrieg/static/css/main.3946dfe0.chunk.css",
+  "main.js": "/Blitzkrieg/static/js/main.fa54072d.chunk.js",
+  "main.js.map": "/Blitzkrieg/static/js/main.fa54072d.chunk.js.map",
+  "static/js/1.2dd891c4.chunk.js": "/Blitzkrieg/static/js/1.2dd891c4.chunk.js",
+  "static/js/1.2dd891c4.chunk.js.map": "/Blitzkrieg/static/js/1.2dd891c4.chunk.js.map",
+  "runtime~main.js": "/Blitzkrieg/static/js/runtime~main.10789945.js",
+  "runtime~main.js.map": "/Blitzkrieg/static/js/runtime~main.10789945.js.map",
+  "static/media/logo.svg": "/Blitzkrieg/static/media/logo.5d5d9eef.svg",
+  "static/css/main.3946dfe0.chunk.css.map": "/Blitzkrieg/static/css/main.3946dfe0.chunk.css.map",
+  "index.html": "/Blitzkrieg/index.html",
+  "precache-manifest.b62d374de5a030f9f9e050b756456af3.js": "/Blitzkrieg/precache-manifest.b62d374de5a030f9f9e050b756456af3.js",
+  "service-worker.js": "/Blitzkrieg/service-worker.js"
 }

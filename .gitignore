@@ -2,6 +2,8 @@
 
 # dependencies
 /src/gui/blitzkrieg-web-app/node_modules
+/src/gui/blitzkrieg-web-app/.pnp
+.pnp.js
 
 # testing
 /src/gui/blitzkrieg-web-app/coverage

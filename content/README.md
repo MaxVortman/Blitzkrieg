@@ -1,4 +1,4 @@
-# Blitzkrieg content
+# Blitzkrieg content*
 
 This is subfolder of game dialogs and actions.
 
@@ -31,3 +31,7 @@ This is subfolder of game dialogs and actions.
     ]
 }
 ```
+
+---
+
+_*author Elaine Yagudina_

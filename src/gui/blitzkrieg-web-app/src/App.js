@@ -33,7 +33,7 @@ class App extends React.Component {
           <img className='header-logo' src={logo} alt='logo' />
         </header>
         <div className='app-body'>
-          <textarea className='text-field' readOnly='true' value={this.state.textarea} />
+          <textarea className='text-field' readOnly={true} value={this.state.textarea} />
           <div className='app-submit-query'>
             <input className='query-field' type='text' placeholder='Type a text...' value={this.state.input} onChange={this.handleInputChange} />
             <button className='submit-query-btn' onClick={this.submitBtnHandleClick}>Submit</button>

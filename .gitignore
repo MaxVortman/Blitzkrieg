@@ -21,4 +21,4 @@
 /src/gui/blitzkrieg-web-app/npm-debug.log*
 /src/gui/blitzkrieg-web-app/yarn-debug.log*
 /src/gui/blitzkrieg-web-app/yarn-error.log*
-*/.vscode/*
+/src/gui/blitzkrieg-web-app/.vscode/launch.json

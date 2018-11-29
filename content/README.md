@@ -13,19 +13,20 @@ This is subfolder of game dialogs and actions.
                 "text": "Среда. Самое приятное событие дня – завтрак...",
                 "actions": [
                     {
-                        "action" : "игрок согласился",
+                        "action" : ["хочу"],
+                        "text" : "Товарищ довольно улыбается...",
                         "state-changes" : {
                         "colleagues-attitude" : "+ 10"
                         }
                     },
                     {
-                        "action": "игрок отказался",
+                        "action": ["не хочу"],
+                        "text" : "Ты внимательно выслушал его предложение...",
                         "state-changes" : {
                         "colleagues-attitude" : "- 10"
                         }
                     }
-                ],
-                "next-episode" : "episode-???"
+                ]
             }
         }
     ]

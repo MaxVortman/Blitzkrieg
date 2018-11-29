@@ -12,7 +12,6 @@
     margin-top: 1em;
     display: flex;
     flex-flow: column;
-    box-sizing: initial;
     height: 100%;
 }
 
@@ -20,17 +19,20 @@
     font-size: 2em;
     margin-top: 1em;
     display: flex;
+    justify-content: center;
 }
 
 .query-field{
-    width: 90%;
+    width: 80%;
     font-size: inherit;
-}
-
-.submit-query-btn{
-    width: 10%;
 }
 
 .text-field{
     height: 40em;
+    width: 80%;
+}
+
+.text-container{
+    display: flex;
+    justify-content: center;
 }

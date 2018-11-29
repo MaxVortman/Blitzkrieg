@@ -11,19 +11,28 @@ class App extends React.Component {
       textarea: '',
       input: ''
     }
+    prologInteractor.startGame().then(res => {
+      this.setState({
+        textarea: res,
+        input: ''
+      });
+    });
   }
 
-  submitBtnHandleClick = () => {
-    this.setState(state => {
-      return {
-        textarea: prologInteractor.postMessage(state.input)
-      }
+  handleInputChange = (e) => {
+    this.setState({ input: e.target.value });
+  }
+
+  handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      prologInteractor.postMessage(this.state.input).then(res => {
+        this.setState(
+          {
+            textarea: res,
+            input: ''
+          });
+      });
     }
-    );
-  }
-
-  handleInputChange = (e) =>{
-    this.setState({input: e.target.value});
   }
 
   render() {
@@ -33,10 +42,16 @@ class App extends React.Component {
           <img className='header-logo' src={logo} alt='logo' />
         </header>
         <div className='app-body'>
-          <textarea className='text-field' readOnly={true} value={this.state.textarea} />
+          <div className='text-container'>
+            <textarea className='text-field' readOnly={true} value={this.state.textarea} />
+          </div>
           <div className='app-submit-query'>
-            <input className='query-field' type='text' placeholder='Type a text...' value={this.state.input} onChange={this.handleInputChange} />
-            <button className='submit-query-btn' onClick={this.submitBtnHandleClick}>Submit</button>
+            <input className='query-field'
+              type='text'
+              placeholder='Type a text...'
+              value={this.state.input}
+              onChange={this.handleInputChange}
+              onKeyPress={this.handleKeyPress} />
           </div>
         </div>
       </div>

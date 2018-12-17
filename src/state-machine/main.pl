@@ -14,25 +14,20 @@ read_json(State, JsonDict) :-
     open(Path, read, JsonStream),
     json_read_dict(JsonStream, JsonDict).
 
+get_match_action(_, [Action], Action).
+
 get_match_action(Query, [Action|_], Action) :-
     member(Query, Action.action).
 
 get_match_action(Query, [_|T], Action) :-
     get_match_action(Query, T, Action). 
 
-say(_, intro, State, Text) :-
-    read_json(intro, IntroDict),
-    [Event|_]=IntroDict.events,
-    [Action|_]=Event.event.actions,
-    Text=Action.text,
-    State=episode1.
-
-say(Query, episode1, State, Text) :-
-    read_json(episode1, Dict),
+say(Query, State, NewState, Text) :-
+    read_json(State, Dict),
     [Event|_]=Dict.events,
     get_match_action(Query, Event.event.actions, Action),
     Text=Action.text,
-    State=episode2.
+    NewState=Event.event.next_episode.
 
 read_text(State, Text) :-
     read_json(State, Dict),

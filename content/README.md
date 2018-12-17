@@ -26,7 +26,8 @@ This is subfolder of game dialogs and actions.
                         "colleagues-attitude" : "- 10"
                         }
                     }
-                ]
+                ],
+                "next_episode": "episodeN"
             }
         }
     ]

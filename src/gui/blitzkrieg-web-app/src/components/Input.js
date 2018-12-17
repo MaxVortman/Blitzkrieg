@@ -1,0 +1,53 @@
+import React from 'react';
+import * as prologInteractor from '../prologInteractor';
+import { writeText } from './DialogBox';
+import ContinueButton from './ContinueButton';
+import TextInput from './TextInput';
+
+export default class Input extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            input: '',
+            state: 'intro',
+            isAction: true
+        }
+        this.readMessage();
+    }
+
+    readMessage = () => {
+        prologInteractor.readMessage(this.state.state).then(res => {
+            this.setState({
+                isAction: true
+            });
+            writeText(res.text);
+        });
+    }
+
+    handleInputChange = (e) => {
+        this.setState({ input: e.target.value });
+    }
+
+    handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            prologInteractor.postMessage(this.state.input, this.state.state).then(res => {
+                this.setState({
+                    input: '',
+                    state: res.state,
+                    isAction: false
+                });
+                writeText(res.text);
+            });
+        }
+    }
+
+    render() {
+        return (
+            <div className='app-submit-query'>
+            {this.state.isAction 
+            ? <TextInput onChange={this.handleInputChange} onKeyPress={this.handleKeyPress} input={this.state.input}/> 
+            : <ContinueButton onClick={this.readMessage}/>}
+            </div>
+            );
+    }
+}

@@ -36,3 +36,8 @@
     display: flex;
     justify-content: center;
 }
+
+.continue-button{
+    width: 80%;
+    font-size: inherit;
+}

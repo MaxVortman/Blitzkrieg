@@ -10,21 +10,28 @@ This is subfolder of game dialogs and actions.
         {
             "condition": "default",
             "event": {
+                "have_action": "true",
                 "text": "Среда. Самое приятное событие дня – завтрак...",
                 "actions": [
                     {
                         "action" : ["хочу"],
                         "text" : "Товарищ довольно улыбается...",
-                        "state-changes" : {
-                        "colleagues-attitude" : "+ 10"
+                        "player_data_changes": [
+                        {
+                            "property": "episode1Answer",
+                            "value": "yes"
                         }
+                    ],
                     },
                     {
                         "action": ["не хочу"],
                         "text" : "Ты внимательно выслушал его предложение...",
-                        "state-changes" : {
-                        "colleagues-attitude" : "- 10"
+                        "player_data_changes": [
+                        {
+                            "property": "episode1Answer",
+                            "value": "no"
                         }
+                    ],
                     }
                 ],
                 "next_episode": "episodeN"

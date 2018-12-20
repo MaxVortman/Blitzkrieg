@@ -18,7 +18,7 @@ export default class Input extends React.Component {
     readMessage = () => {
         prologInteractor.readMessage(this.state.state).then(res => {
             this.setState({
-                isAction: true
+                isAction: res.have_action === "true"
             });
             writeText(res.text);
         });

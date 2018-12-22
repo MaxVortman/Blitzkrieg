@@ -30,7 +30,7 @@
                         ]
                     }
                 ],
-                "next_episode": "episode2"
+                "default_next_episode": "episode2"
             }
         }
     ]

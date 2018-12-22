@@ -61,7 +61,7 @@ say(Query, State, NewState, Text, Data, NewData) :-
     get_match_event(Dict.events, Data, Event),
     get_match_action(Query, Event.event.actions, Action),
     Text=Action.text,
-    NewState=Event.event.next_episode,
+    NewState=Event.event.default_next_episode,
     handle_changes(Action, Data, NewData), !.
 
 read_text(State, NextState, Text, Data, HaveAction) :-
@@ -69,7 +69,7 @@ read_text(State, NextState, Text, Data, HaveAction) :-
     get_match_event(Dict.events, Data, Event),
     Text=Event.event.text,
     HaveAction=Event.event.have_action,
-    NextState=Event.event.next_episode.
+    NextState=Event.event.default_next_episode.
     
 :- http_handler(root(read), read_handler, []).		
 :- http_handler(root(action), action_handler, []).	

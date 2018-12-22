@@ -8,7 +8,12 @@ This is subfolder of game dialogs and actions.
 {
     "events":[
         {
-            "condition": "default",
+            "conditions": [
+                {
+                    "property": "episode3Answer",
+                    "value": "no"
+                }
+            ],
             "event": {
                 "have_action": "true",
                 "text": "Среда. Самое приятное событие дня – завтрак...",
@@ -17,25 +22,29 @@ This is subfolder of game dialogs and actions.
                         "action" : ["хочу"],
                         "text" : "Товарищ довольно улыбается...",
                         "player_data_changes": [
-                        {
-                            "property": "episode1Answer",
-                            "value": "yes"
-                        }
-                    ],
+                            {
+                                "property": "episode1Answer",
+                                "value": "yes"
+                            }
+                        ],
                     },
                     {
                         "action": ["не хочу"],
                         "text" : "Ты внимательно выслушал его предложение...",
                         "player_data_changes": [
-                        {
-                            "property": "episode1Answer",
-                            "value": "no"
-                        }
-                    ],
+                            {
+                                "property": "episode1Answer",
+                                "value": "no"
+                            }
+                        ],
+                    "next_episode": "episodeM"
                     }
                 ],
-                "next_episode": "episodeN"
+                "default_next_episode": "episodeN"
             }
+        },
+        {
+            "conditions": ...
         }
     ]
 }

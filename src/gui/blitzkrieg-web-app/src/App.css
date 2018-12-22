@@ -30,12 +30,14 @@
 .text-field{
     height: 40em;
     width: 80%;
+    background: rgba(255, 245, 215, 0.5);
 }
 
 .text-container{
     display: flex;
     justify-content: center;
 }
+
 
 .continue-button{
     width: 80%;

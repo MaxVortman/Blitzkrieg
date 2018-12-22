@@ -29,8 +29,9 @@
 
 .text-field{
     height: 40em;
-    width: 80%;
+    width: 60%;
     background: rgba(255, 245, 215, 0.5);
+    font-size: inherit;
 }
 
 .text-container{
@@ -38,6 +39,12 @@
     justify-content: center;
 }
 
+.data-field{
+    height: 40em;
+    width: 20%;
+    background: rgba(255, 245, 215, 0.5);
+    font-size: inherit;
+}
 
 .continue-button{
     width: 80%;

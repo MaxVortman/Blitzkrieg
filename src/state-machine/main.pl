@@ -32,32 +32,45 @@ make_changes([Change|Changes], Data, ResData) :-
 make_changes([], Data, Data).
 
 handle_changes(Action, Data, NewData) :-
-    has_changes(Action),
+    has_key(Action, player_data_changes),
     make_changes(Action.player_data_changes, Data, NewData).
 
 handle_changes(_, Data, Data).
 
-has_changes(Action) :-
-    dict_keys(Action, Keys),
-    member(player_data_changes, Keys).
+has_key(Dict, Key) :-
+    dict_keys(Dict, Keys),
+    member(Key, Keys).
 
+conditions_true([H|T], Data) :-
+    string_to_atom(H.property, Prop),
+    Data.get(Prop) = H.value,
+    conditions_true(T, Data).
 
+conditions_true([], _).
+
+get_match_event([Event], _, Event).
+
+get_match_event([H|_], Data, H) :-
+    conditions_true(H.conditions, Data).
+
+get_match_event([_|T], Data, Event) :-
+    get_match_event(T, Data, Event).
 
 say(Query, State, NewState, Text, Data, NewData) :-
     read_json(State, Dict),
-    [Event|_]=Dict.events,
+    get_match_event(Dict.events, Data, Event),
     get_match_action(Query, Event.event.actions, Action),
     Text=Action.text,
     NewState=Event.event.next_episode,
     handle_changes(Action, Data, NewData), !.
 
-read_text(State, Text, HaveAction) :-
+read_text(State, NextState, Text, Data, HaveAction) :-
     read_json(State, Dict),
-    [Event|_]=Dict.events,
+    get_match_event(Dict.events, Data, Event),
     Text=Event.event.text,
-    HaveAction=Event.event.have_action.
+    HaveAction=Event.event.have_action,
+    NextState=Event.event.next_episode.
     
-
 :- http_handler(root(read), read_handler, []).		
 :- http_handler(root(action), action_handler, []).	
 :- set_setting(http:cors, [*]).
@@ -66,10 +79,19 @@ server(Port) :-
     http_server(http_dispatch, [port(Port)]).
 
 read_handler(Request) :-
+    option(method(options), Request), !,
+    cors_enable(Request,
+                [ methods([get,post,delete])
+                ]),
+    format('~n').                           % 200 with empty body
+
+read_handler(Request) :-
+    option(method(post), Request), !,
     http_parameters(Request, [state(State, [])]),
     cors_enable,
-    read_text(State, T, HaveAction),
-    reply_json(response{have_action:HaveAction, text:T}), !.
+    http_read_json_dict(Request, Data),
+    read_text(State, NextState, T, Data, HaveAction),
+    reply_json(response{have_action:HaveAction, text:T, next_state:NextState}), !.
 
 action_handler(Request) :-
     option(method(options), Request), !,

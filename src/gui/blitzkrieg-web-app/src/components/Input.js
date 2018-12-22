@@ -1,8 +1,9 @@
 import React from 'react';
 import * as prologInteractor from '../prologInteractor';
-import { writeText } from './DialogBox';
+import { writeText, writeData } from './DialogBox';
 import ContinueButton from './ContinueButton';
 import TextInput from './TextInput';
+import { getStringifyPlayerData } from '../playerData';
 
 export default class Input extends React.Component {
     constructor(props) {
@@ -17,9 +18,12 @@ export default class Input extends React.Component {
 
     readMessage = () => {
         prologInteractor.readMessage(this.state.state).then(res => {
+            const isAction = res.have_action === "true";
             this.setState({
-                isAction: res.have_action === "true"
+                isAction: isAction
             });
+            if (!isAction)
+                this.setState({ state: res.next_state });
             writeText(res.text);
         });
     }
@@ -37,6 +41,7 @@ export default class Input extends React.Component {
                     isAction: false
                 });
                 writeText(res.text);
+                writeData(getStringifyPlayerData());
             });
         }
     }
@@ -44,10 +49,10 @@ export default class Input extends React.Component {
     render() {
         return (
             <div className='app-submit-query'>
-            {this.state.isAction 
-            ? <TextInput onChange={this.handleInputChange} onKeyPress={this.handleKeyPress} input={this.state.input}/> 
-            : <ContinueButton onClick={this.readMessage}/>}
+                {this.state.isAction
+                    ? <TextInput onChange={this.handleInputChange} onKeyPress={this.handleKeyPress} input={this.state.input} />
+                    : <ContinueButton onClick={this.readMessage} />}
             </div>
-            );
+        );
     }
 }

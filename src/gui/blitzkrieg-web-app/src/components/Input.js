@@ -3,7 +3,7 @@ import * as prologInteractor from '../prologInteractor';
 import { writeText, writeData } from './DialogBox';
 import ContinueButton from './ContinueButton';
 import TextInput from './TextInput';
-import { getStringifyPlayerData } from '../playerData';
+import { playerData } from '../playerData';
 
 export default class Input extends React.Component {
     constructor(props) {
@@ -20,10 +20,9 @@ export default class Input extends React.Component {
         prologInteractor.readMessage(this.state.state).then(res => {
             const isAction = res.have_action === "true";
             this.setState({
-                isAction: isAction
+                isAction: isAction,
+                state: res.state
             });
-            if (!isAction)
-                this.setState({ state: res.next_state });
             writeText(res.text);
         });
     }
@@ -41,7 +40,7 @@ export default class Input extends React.Component {
                     isAction: false
                 });
                 writeText(res.text);
-                writeData(getStringifyPlayerData());
+                writeData(playerData.toString());
             });
         }
     }

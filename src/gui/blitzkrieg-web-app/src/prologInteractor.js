@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { playerData, setPlayerData } from './playerData';
+import { playerData } from './playerData';
 
 export async function postMessage(message, state) {
     const url = "http://localhost:5000/action?query=" + message + "&state=" + state;
     const res = await axios.post(url, playerData);
-    setPlayerData(res.data.playerData);
+    playerData.set(res.data.playerData);
     return res.data;
 }
 
